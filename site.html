@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite para Sair</title>
+    <style>
+        body {
+            font-family: "Segoe Script", sans-serif;
+            background-image: url('https://wallpaperset.com/w/full/f/0/9/514389.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+        }
+        
+        .container {
+            text-align: center;
+        }
+        
+        h1 {
+            color: #3b0027;
+	        font-size:70px;
+            padding-bottom: 0px;
+            margin-bottom: 0px;
+        }
+        
+        .buttons {
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 0 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        button#sim {
+            color: #3b0027;
+        }
+        
+        button#nao {
+            color: #3b0027;
+        }
+        
+        button:hover {
+            filter: brightness(110%);
+        }
+        p {
+            font-family: 'Courier New';
+        }
+        #nome {
+            font-size: 45px;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Olá, <a id="nome">Marcela!</a></h3>
+        <h1>Quer sair comigo amanhã?</h1>
+        <p>Vamos no MC, eu só quero ver e passar um tempo com você</p>
+        <div class="buttons">
+            <button id="sim" onclick="responder(true)">SIM</button>
+            <button id="nao" onclick="responder(false)">NÃO</button>
+        </div>
+        <p id="mensagem"></p>
+    </div>
+    <script>
+        window.onload = function() {
+            var audio = document.getElementById("video-background");
+            audio.play();
+        };
+
+        function responder(confirmacao) {
+            if (confirmacao) {
+                document.getElementById("mensagem").innerText = "Ótimo! Aguardo ansiosamente!";
+            } else {
+                var naoButton = document.getElementById("nao");
+                var fontSize = window.getComputedStyle(naoButton, null).getPropertyValue('font-size');
+                fontSize = parseFloat(fontSize);
+                naoButton.style.fontSize = (fontSize / 2) + "px";
+                document.getElementById("mensagem").innerText = "Tem certeza?";
+            }
+        }
+    </script>
+</body>
+</html>
